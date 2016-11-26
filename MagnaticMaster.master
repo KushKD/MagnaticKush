@@ -1,0 +1,160 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MagnaticMaster.master.cs" Inherits="MagnaticMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head  id="Head1" runat="server">
+      <meta charset="utf-8" />
+
+    <!-- IE Edge Meta Tag -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- View Port -->
+    <meta name="viewport" content="width=device-width , initial-scale=1"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/vegas.min.css"/>
+    <link rel="stylesheet" href="css/tooltipster.bundle.min.css"/>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js" ></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js" ></script>
+    <title>MagnaticKush (KD) - Software Craftsman</title> 
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+   
+
+      <!-- Navigation -->
+
+        <div class="container-fixed navbar navbar-fixed-top" id="nav">
+        <div class="row">
+
+              <div class="col-lg-1 col-md-1 col-xs-2 col-sm-1 icons_header " style="margin-left:10px;" >
+              <a href="default.aspx">
+            <section >
+                <img class="icons tt" data-tooltip-content="#tooltip_content_home" src="svg/home.svg" alt="Icon"/>
+            </section> <!-- Section 3 -->
+                </a> 
+        </div>
+
+        <div class="col-lg-1 col-md-1 col-xs-2 col-sm-1 icons_header" >
+              <a href="who_am_i.aspx" >
+            <section  >
+                <img class="icons tt" data-tooltip-content="#tooltip_content_me"  src="svg/me.svg" alt="Icon"/>  <%-- title="Who is MAgnatic Kush ??"--%>
+            </section> <!-- Section 3 -->
+                </a> 
+        </div>
+
+        
+        <div class="col-lg-1 col-md-1 col-xs-2 col-sm-1 icons_header" >
+              <a href="projects.aspx">
+            <section >
+                <img class="icons tt" data-tooltip-content="#tooltip_content_projects" src="svg/projects.svg" alt="Icon"/>
+            </section> <!-- Section 3 -->
+                </a> 
+        </div>
+
+<div class="col-lg-1 col-md-1 col-xs-2 col-sm-1 icons_header"  style="display:block;">
+              <a href="Blog.aspx" >
+            <section>
+                <img class="icons tt" data-tooltip-content="#tooltip_content_blog" src="svg/blog.svg" alt="Icon"/>
+            </section> <!-- Section 3 -->
+                </a> 
+        </div>
+          
+      
+        </div>
+           
+        </div>
+
+
+           <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <div class="tooltip_templates">
+    <span id="tooltip_content_me">
+        <img src="svg/me.svg" /> <strong class="newfonts" style="color:#ffffff;">Lets get Ourselves introduced. I'm Magnatic Kush </strong>
+    </span>
+             <span id="tooltip_content_blog">
+        <img src="svg/blog.svg" /> <strong class="newfonts" style="color:#ffffff;">Whats in his M I nD ..</strong>
+    </span>
+
+              <span id="tooltip_content_projects">
+        <img src="svg/projects.svg" /> <strong class="newfonts" style="color:#ffffff;">Projects and Work</strong>
+    </span>
+
+             <span id="tooltip_content_home">
+        <img src="svg/home.svg" /> <strong class="newfonts" style="color:#ffffff;">Go To Home!!</strong>
+    </span>
+</div>
+
+        <!-- footer -->
+         <div class="footer navbar-fixed-bottom">
+        <div class="row">
+
+        <div class="col-lg-12">
+        <p class="text-center center-block" id="foot"> &copy; Magnatic Kush 2016</p>
+        </div>
+    
+    </div>
+             </div>
+    </form>
+       <script src="js/jquery-3.1.0.min.js" ></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/vegas.min.js"></script>
+        <script src="js/tooltipster.bundle.min.js"></script>
+         <script src="js/graphs.js"></script>
+        <script src="js/waypoints.min.js"></script>
+        <script src="js/Chart.js"></script>
+
+
+        <script type="text/javascript">
+
+         $(document).ready(function() {
+            $('.tt').tooltipster();
+
+            //http://iamceege.github.io/tooltipster/#styling
+             theme: 'tooltipster-noir';
+             contentCloning: true; 
+             animation: 'slide';
+             delay: 200;
+             theme: 'tooltipster-punk';
+            
+         });
+         var images = [];
+            <% var serializer = new System.Web.Script.Serialization.JavaScriptSerializer(); %>
+            images = <%= serializer.Serialize(getting_images)%>
+                console.log(images.length);
+        
+
+            // array of images
+            var slides = [];
+
+            // push two images to the array
+            for (var i = 0; i < images.length; i++) {
+                slides.push({ 'src': images[i] });
+                
+            }
+            
+
+         $("body").vegas({
+             shuffle: true,
+             cover:true,
+             trasition: 'fade',
+             slides: slides,
+             overlay: 'images/overlays/02.png'
+});
+        </script>
+   
+</body>
+</html>
+
+
+
+
+
+
+
+
+
